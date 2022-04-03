@@ -4,6 +4,7 @@ import br.com.quintinodigital.massariapi.entity.PessoaEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PessoaService implements PessoaInterfaceService {
 
@@ -21,6 +22,19 @@ public class PessoaService implements PessoaInterfaceService {
     @Override
     public List<PessoaEntity> findAll() {
         return this.pessoaEntityList;
+    }
+
+    @Override
+    public PessoaEntity updateOne(PessoaEntity pessoaEntity) {
+        PessoaEntity pessoa = new PessoaEntity();
+        for(PessoaEntity pessoaResultado : this.pessoaEntityList) {
+            if(pessoaResultado.getCodigo().equals(pessoaEntity.getCodigo())) {
+                pessoaResultado.setNome(pessoaEntity.getNome());
+                pessoa = pessoaResultado;
+            }
+        }
+//        this.pessoaEntityList = this.pessoaEntityList.stream().map(p -> p.getCodigo().equals(pessoaEntity.getCodigo()) ? pessoaEntity : p ).collect(Collectors.toList());
+        return pessoa;
     }
 
 }
