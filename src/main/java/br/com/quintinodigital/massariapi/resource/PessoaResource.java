@@ -34,4 +34,11 @@ public class PessoaResource implements Serializable {
         return this.pessoaService.updateOne(pessoaEntity);
     }
 
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{codigo}")
+    public void deleteOne(@PathParam("codigo") Long codigo) {
+        this.pessoaService.deleteOne(codigo);
+    }
+
 }

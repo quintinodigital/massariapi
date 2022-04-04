@@ -8,4 +8,5 @@ public interface PessoaInterfaceService {
     public List<PessoaEntity> findAll();
     public PessoaEntity saveOne(PessoaEntity pessoaEntity);
     public PessoaEntity updateOne(PessoaEntity pessoaEntity);
+    public void deleteOne(Long codigo);
 }
